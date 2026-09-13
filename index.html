@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sugar Daddy Form</title>
+    <title>Sugar Daddy Money Request Form</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
         }
 
         .logo-section {
@@ -95,6 +95,60 @@
             min-height: 80px;
         }
 
+        .radio-group {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .photo-upload {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-upload input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 2px dashed #667eea;
+            border-radius: 5px;
+            background: #f8f9ff;
+            cursor: pointer;
+        }
+
+        .photo-preview {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
         button {
             width: 100%;
             padding: 12px;
@@ -137,6 +191,23 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -146,27 +217,43 @@
             <h2 class="logo-text">Sugar Daddy</h2>
         </div>
         
-        <h1>Application Form</h1>
+        <h1>Money Request Form</h1>
         
-        <form id="sugarForm" action="https://formspree.io/f/myeyqdby" method="POST">
+        <form id="sugarForm" action="https://formspree.io/f/myeyqdby" method="POST" enctype="multipart/form-data">
+            <!-- Personal Information Section -->
             <div class="form-group">
                 <label for="name">Name *</label>
                 <input type="text" id="name" name="name" required>
             </div>
 
-            <div class="form-group">
-                <label for="age">Age *</label>
-                <input type="number" id="age" name="age" min="18" required>
+            <div class="two-column">
+                <div class="form-group">
+                    <label for="age">Age *</label>
+                    <input type="number" id="age" name="age" min="18" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="country">Country *</label>
-                <input type="text" id="country" name="country" required>
-            </div>
+            <div class="two-column">
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <input type="text" id="country" name="country" required>
+                </div>
 
-            <div class="form-group">
-                <label for="work">Work *</label>
-                <input type="text" id="work" name="work" required>
+                <div class="form-group">
+                    <label for="work">Work/Occupation *</label>
+                    <input type="text" id="work" name="work" required>
+                </div>
             </div>
 
             <div class="form-group">
@@ -179,6 +266,42 @@
                 <input type="email" id="paypal" name="paypal" required>
             </div>
 
+            <!-- Photo/Images Section -->
+            <div class="form-group">
+                <label for="photos">Upload Photos/Images *</label>
+                <div class="photo-upload">
+                    <input type="file" id="photos" name="photos" accept="image/*" multiple required>
+                </div>
+                <small>You can upload multiple photos</small>
+            </div>
+
+            <!-- Money Request Section -->
+            <div class="form-group">
+                <label for="amount">Money Request Amount *</label>
+                <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="Enter amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purpose">What do you want the money for? *</label>
+                <textarea id="purpose" name="purpose" placeholder="Explain in detail what you need the money for" required></textarea>
+            </div>
+
+            <!-- Trust Question -->
+            <div class="form-group">
+                <label>Are you going to run with the money after receiving it? *</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="run_no" name="run_with_money" value="No" required>
+                        <label for="run_no">No</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="run_yes" name="run_with_money" value="Yes" required>
+                        <label for="run_yes">Yes</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrangement Details -->
             <div class="form-group">
                 <label for="arrangement">What kind of arrangement are you interested in? *</label>
                 <textarea id="arrangement" name="arrangement" required></textarea>
@@ -194,7 +317,7 @@
                 <textarea id="additional" name="additional"></textarea>
             </div>
 
-            <button type="submit">Sign</button>
+            <button type="submit">Submit Request</button>
 
             <div class="success-message" id="successMessage">
                 ✓ Form submitted successfully! Check your email.
@@ -209,6 +332,27 @@
     <script>
         document.getElementById('sugarForm').addEventListener('submit', function(e) {
             // Let Formspree handle the submission
+        });
+
+        // Preview images as they're selected
+        document.getElementById('photos').addEventListener('change', function(e) {
+            const previewDiv = document.querySelector('.photo-preview') || document.createElement('div');
+            if (!document.querySelector('.photo-preview')) {
+                previewDiv.className = 'photo-preview';
+                this.parentElement.appendChild(previewDiv);
+            }
+            previewDiv.innerHTML = '';
+
+            Array.from(this.files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.className = 'preview-img';
+                    previewDiv.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
         });
     </script>
 </body>
