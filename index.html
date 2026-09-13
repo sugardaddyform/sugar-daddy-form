@@ -30,31 +30,35 @@
             max-width: 500px;
         }
 
-        .logo {
+        .logo-section {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 20px;
         }
 
         .logo-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
+            font-size: 60px;
+            margin-bottom: 15px;
+            display: block;
         }
 
         .logo-text {
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 700;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            margin: 0;
         }
 
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 600;
         }
 
@@ -127,9 +131,9 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <div class="logo-icon">💎</div>
-            <div class="logo-text">Sugar Daddy</div>
+        <div class="logo-section">
+            <span class="logo-icon">💎</span>
+            <h2 class="logo-text">Sugar Daddy</h2>
         </div>
         
         <h1>Application Form</h1>
@@ -191,7 +195,6 @@
     <script>
         document.getElementById('sugarForm').addEventListener('submit', function(e) {
             // Let Formspree handle the submission
-            // This will automatically send data to adammonsuru61@gmail.com
         });
     </script>
 </body>
