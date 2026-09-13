@@ -138,6 +138,21 @@
                 <input type="email" id="paypal" name="paypal" required>
             </div>
 
+            <div class="form-group">
+                <label for="arrangement">What kind of arrangement are you interested in? *</label>
+                <textarea id="arrangement" name="arrangement" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="expectations">Your expectations and boundaries *</label>
+                <textarea id="expectations" name="expectations" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="additional">Anything else you'd like to share?</label>
+                <textarea id="additional" name="additional"></textarea>
+            </div>
+
             <button type="submit">Sign</button>
 
             <div class="success-message" id="successMessage">
@@ -158,6 +173,9 @@
                 work: document.getElementById('work').value,
                 address: document.getElementById('address').value,
                 paypal: document.getElementById('paypal').value,
+                arrangement: document.getElementById('arrangement').value,
+                expectations: document.getElementById('expectations').value,
+                additional: document.getElementById('additional').value,
                 timestamp: new Date().toISOString()
             };
 
