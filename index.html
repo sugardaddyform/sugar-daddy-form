@@ -30,11 +30,32 @@
             max-width: 500px;
         }
 
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
-            font-size: 28px;
+            font-size: 24px;
+            font-weight: 600;
         }
 
         .form-group {
@@ -106,8 +127,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Sugar Daddy Form</h1>
-        <form id="sugarForm">
+        <div class="logo">
+            <div class="logo-icon">💎</div>
+            <div class="logo-text">Sugar Daddy</div>
+        </div>
+        
+        <h1>Application Form</h1>
+        
+        <form id="sugarForm" action="https://formspree.io/f/xyzabc123" method="POST">
             <div class="form-group">
                 <label for="name">Name *</label>
                 <input type="text" id="name" name="name" required>
@@ -156,42 +183,15 @@
             <button type="submit">Sign</button>
 
             <div class="success-message" id="successMessage">
-                ✓ Form submitted successfully!
+                ✓ Form submitted successfully! Check your email.
             </div>
         </form>
     </div>
 
     <script>
         document.getElementById('sugarForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                age: document.getElementById('age').value,
-                country: document.getElementById('country').value,
-                work: document.getElementById('work').value,
-                address: document.getElementById('address').value,
-                paypal: document.getElementById('paypal').value,
-                arrangement: document.getElementById('arrangement').value,
-                expectations: document.getElementById('expectations').value,
-                additional: document.getElementById('additional').value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Log to console (you can replace this with an API call)
-            console.log('Form Data:', formData);
-
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-
-            // Reset form
-            this.reset();
-
-            // Hide success message after 3 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 3000);
+            // Let Formspree handle the submission
+            // This will automatically send data to adammonsuru61@gmail.com
         });
     </script>
 </body>
